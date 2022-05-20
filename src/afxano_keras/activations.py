@@ -5,7 +5,7 @@ def heaviside(x, n: float = 0.5):
     return tf.cast(x >= n, tf.float32)
 
 
-def differentiable_binary_activation(x, gamma: int = 20, T: float = 0.5):
+def differentiable_binary(x, gamma: int = 20, T: float = 0.5):
     """Approximately binarize the input with a differentiable function.
 
     Contour Loss for Instance Segmentation via k-step Distance
