@@ -58,3 +58,14 @@ class MAE(AvgMetric):
         y_true = tf.cast(y_true, tf.float32)
         y_pred = tf.cast(y_pred, tf.float32)
         return tf.reduce_mean(keras.metrics.mean_absolute_error(y_true, y_pred))
+
+
+class RMSE(AvgMetric):
+    def __init__(self, name="rmse", **kwargs) -> None:
+        super().__init__(name=name, **kwargs)
+
+    def __call__(self, y_true, y_pred, sample_weight=None):
+        del sample_weight
+        y_true = tf.cast(y_true, tf.float32)
+        y_pred = tf.cast(y_pred, tf.float32)
+        return tf.reduce_mean(tf.sqrt(keras.metrics.mean_squared_error(y_true, y_pred)))
